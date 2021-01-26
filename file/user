@@ -1,0 +1,64 @@
+#代谢分析
+useradd -m lujw -s /bin/bash -d /home/lujw
+echo 'lujw:lumingbio' | chpasswd
+
+useradd -m mahc -s /bin/bash -d /home/mahc
+echo 'mahc:lumingbio' | chpasswd
+
+useradd -m mahc1 -s /bin/bash -d /home/mahc1
+echo 'mahc1:lumingbio' | chpasswd
+
+useradd -m yinxl -s /bin/bash -d /home/yinxl
+echo 'yinxl:lumingbio' | chpasswd
+
+useradd -m yinxl1 -s /bin/bash -d /home/yinxl1
+echo 'yinxl1:lumingbio' | chpasswd
+
+#useradd -m duangq -s /bin/bash -d /home/duangq
+#echo 'duangq:lumingbio' | chpasswd
+
+#useradd -m yuj -s /bin/bash -d /home/yuj
+#echo 'yuj:lumingbio' | chpasswd
+
+#useradd -m lujw1 -s /bin/bash -d /home/lujw1
+#echo 'lujw1:lumingbio' | chpasswd
+
+useradd -m yuany -s /bin/bash -d /home/yuany
+echo 'yuany:lumingbio' | chpasswd
+
+useradd -m tians -s /bin/bash -d /home/tians
+echo 'tians:lumingbio' | chpasswd
+
+useradd -m fus -s /bin/bash -d /home/fus
+echo 'fus:lumingbio' | chpasswd
+
+
+#蛋白分析
+useradd -m tianq -s /bin/bash -d /home/tianq
+echo 'tianq:lumingbio' | chpasswd
+
+useradd -m gest -s /bin/bash -d /home/gest
+echo 'gest:lumingbio' | chpasswd
+
+useradd -m jingxx -s /bin/bash -d /home/jingxx
+echo 'jingxx:lumingbio' | chpasswd
+
+useradd -m chenm -s /bin/bash -d /home/chenm
+echo 'chenm:lumingbio' | chpasswd
+
+#代谢实验
+useradd -m liny -s /bin/bash -d /home/liny
+echo 'liny:lumingbio' | chpasswd
+
+#useradd -m chenbl -s /bin/bash -d /home/chenbl
+#echo 'chenbl:lumingbio' | chpasswd
+
+useradd -m yinnn -s /bin/bash -d /home/yinnn
+echo 'yinnn:lumingbio' | chpasswd
+
+#useradd -m huangjj -s /bin/bash -d /home/huangjj
+#echo 'huangjj:lumingbio' | chpasswd
+
+#蛋白实验
+useradd -m xuy -s /bin/bash -d /home/xuy
+echo 'xuy:lumingbio' | chpasswd

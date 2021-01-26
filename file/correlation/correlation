@@ -1,0 +1,29 @@
+#! /opt/conda/bin/Rscript
+
+library("argparse")
+parser <- ArgumentParser()
+parser$add_argument("-n","--name",default="heatmap.xlsx", help="文件名")
+parser$add_argument("-t","--type",default="jpg", help="图片格式")
+parser$add_argument("-c","--col",default="navy-white-firebrick3", help="配色设置")
+parser$add_argument("-m","--mode",default="mode1", help="显著性呈现方式选择,可选mode1,mode2,mode3,mode3,其他")
+parser$add_argument("-e","--express",default="upper", help="相关性图呈现方向，可选upper,full,lower")
+parser$add_argument("-me","--method",default="circle", help="相关性点形状，可选circle,square,ellipse,number,shade,color,pie")
+
+args <- parser$parse_args()
+
+RMETA2::auto_alldraw(name = args$name,
+type = args$type,
+col = colorRampPalette(unlist(strsplit(x = args$col,split = "-")))(100),
+method = args$method,
+mode = args$express,
+insig={if(args$mode=="mode1"){"n"
+	}else if(args$mode=="mode2"){"label_sig"
+	}else if(args$mode=="mode3"){"blank"
+	}else if(args$mode=="mode4"){"label_sig"
+	}else{"n"}},
+sig.level={if(args$mode=="mode1"){0.05
+	}else if(args$mode=="mode2"){c(0.01,0.05)
+	}else if(args$mode=="mode3"){0.05
+	}else if(args$mode=="mode4"){c(0.001,0.01,0.05)
+	}else{0.05}},
+drawwhat = "correlation")

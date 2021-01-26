@@ -1,0 +1,42 @@
+#! /opt/conda/bin/Rscript
+
+library("argparse")
+parser <- ArgumentParser()
+parser$add_argument("-n","--name",default="heatmap.xlsx", help="文件名")
+parser$add_argument("-s","--scale",default="row", help="归一化模式row/column/none")
+parser$add_argument("-c","--col",default="navy-white-firebrick3", help="配色设置")
+parser$add_argument("-m","--main",default="heatmap", help="标题")
+parser$add_argument("-t","--type",default="jpg", help="图片格式")
+parser$add_argument("-cr", "--clusterrows",default="true", help="是否横聚类")
+parser$add_argument("-cc", "--clustercols",default="false", help="是否纵聚类")
+parser$add_argument("-sr", "--showrownames",default="true", help="是否显示行名")
+parser$add_argument("-sc", "--showcolnames",default="true", help="是否显示列名")
+parser$add_argument("-le", "--legend",default="true", help="是否显示图例")
+parser$add_argument("-l", "--log",default="false", help="是否log处理")
+# parser$add_argument("-gr", "--gapsrow", type="integer", default=0, help="列分区位置")
+# parser$add_argument("-gc", "--gapscol", type="integer", default=0, help="行分区位置")
+parser$add_argument("-rg", "--rowgroup", type="integer", default=0, help="列标注数量")
+parser$add_argument("-cg", "--colgroup", type="integer", default=0, help="行标注数量")
+parser$add_argument("-tr", "--cutreerows", type="integer", default=1, help="列分块数量")
+parser$add_argument("-tc", "--cutreecols", type="integer", default=1, help="行分块数量")
+
+args <- parser$parse_args()
+
+RMETA2::auto_alldraw(name = args$name,
+scale = args$scale,
+main = args$main,
+type = args$type,
+color = colorRampPalette(unlist(strsplit(x = args$col,split = "-")))(100),
+cluster_rows = ifelse(args$clusterrows=="true",T,F), 
+cluster_cols = ifelse(args$clustercols=="true",T,F),
+show_rownames = ifelse(args$showrownames=="true",T,F), 
+show_colnames = ifelse(args$showcolnames=="true",T,F),
+legend = ifelse(args$legend=="true",T,F),
+log = ifelse(args$log=="true",T,F),
+# gaps_row = args$gapsrow,
+# gaps_col = args$gapscol,
+rowgroup = args$rowgroup, 
+colgroup = args$colgroup,
+cutree_rows = args$cutreerows,
+cutree_cols = args$cutreecols,
+drawwhat = "heatmap")

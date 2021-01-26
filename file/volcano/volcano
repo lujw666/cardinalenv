@@ -1,0 +1,21 @@
+#! /opt/conda/bin/Rscript
+
+library("argparse")
+parser <- ArgumentParser()
+parser$add_argument("-n","--name",default="volcano.xlsx", help="文件名")
+parser$add_argument("-t","--type",default="jpg", help="图片格式")
+parser$add_argument("-c","--col",default="blue-grey-red", help="配色设置")
+parser$add_argument("-F","--drawFC",type="double",default=1, help="FC筛选条件")
+parser$add_argument("-V","--VIP",type="double",default=0, help="VIP筛选条件")
+
+
+args <- parser$parse_args()
+
+RMETA2::auto_alldraw(name = args$name,
+type = args$type,
+color = unlist(strsplit(x = args$col,split = "-")),
+drawFC = ifelse(args$drawFC==1,NA,args$drawFC),
+VIP = ifelse(args$VIP==0,NA,args$VIP),
+legend.position = "right",
+legend.background = ggplot2::element_rect(),
+drawwhat = "volcano")
