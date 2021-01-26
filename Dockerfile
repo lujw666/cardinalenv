@@ -61,14 +61,7 @@ RUN apt-get install -y pandoc hub git-flow zip && \
 #设置utf-8
 ENV LANG zh_CN.utf8
 ADD file/ /data/
-RUN	cp /data/heatmap/heatmap /usr/local/bin/  &&  \
-	cp /data/volcano/volcano /usr/local/bin/ &&  \
-	cp /data/correlation/correlation /usr/local/bin/ &&  \
-	cp /data/bubble/bubble /usr/local/bin/ &&  \
-	cp /data/kegg/kegg /usr/local/bin/ &&  \
-	bash /data/user  &&  \
-	rm -rf /srv/shiny-server/* &&  \
-	cp -r /data/biomap/* /srv/shiny-server  &&  \
+RUN	bash /data/user  &&  \
 	rm -rf /data/* &&  \
 	cd /home
 CMD ["/usr/sbin/sshd", "-D"]
