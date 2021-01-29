@@ -59,7 +59,7 @@ RUN apt-get update -y && \
 RUN apt-get install -y pandoc hub git-flow zip && \
 	apt-get clean
 #设置utf-8
-ENV LANG zh_CN.utf8
+ENV LANG en_US.UTF-8
 ADD file/ /data/
 RUN	bash /data/user  &&  \
 	rm -rf /data/* &&  \
