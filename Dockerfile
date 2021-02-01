@@ -36,7 +36,10 @@ RUN	apt-get update -y && \
 	rm -rf /etc/rstudio/rsession.conf && \
 	apt-get clean
 #utf-8支持并修改root登录密码
-RUN apt-get -yq install openssh-server && \
+RUN apt-get update -y && \
+	apt-get install -y locales && \
+	localedef -c -f UTF-8 -i en_US en_US.utf8 && \
+	apt-get -yq install openssh-server && \
 	mkdir /var/run/sshd && \
 	echo 'root:lumingbio' | chpasswd && \
 	sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && \
@@ -44,6 +47,7 @@ RUN apt-get -yq install openssh-server && \
 	echo "export VISIBLE=now" >> /etc/profile && \
 	echo "PATH=/opt/conda/bin:$PATH" >> /etc/profile && \
 	echo "export PATH" >> /etc/profile && \
+	echo "export LANG=en_US.utf8" >> /etc/profile && \
 	apt-get clean
 #部分R包功能修复
 RUN apt-get update -y && \
@@ -54,6 +58,7 @@ RUN apt-get update -y && \
 #安装pandoc
 RUN apt-get install -y pandoc hub git-flow zip && \
 	apt-get clean
+ENV LANG en_US.utf8
 ADD file/ /data/
 RUN	bash /data/user  &&  \
 	rm -rf /data/* &&  \
