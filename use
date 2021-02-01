@@ -1,0 +1,10 @@
+docker run -d --privileged \
+-v /public:/public \
+-v /protein:/protein \
+-v /data/mzdata:/data/mzdata \
+-v /etc/sysconfig/docker:/etc/sysconfig/docker \
+-v /var/run/docker.sock:/var/run/docker.sock \
+-v /usr/bin/docker:/usr/bin/docker \
+-p 8082:22 -p 8789:8787  \
+--name env \
+lujiawei/cardinalenv
