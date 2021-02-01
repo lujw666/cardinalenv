@@ -44,7 +44,6 @@ RUN apt-get -yq install openssh-server && \
 	echo "export VISIBLE=now" >> /etc/profile && \
 	echo "PATH=/opt/conda/bin:$PATH" >> /etc/profile && \
 	echo "export PATH" >> /etc/profile && \
-	echo "export LANG=zh_CN.utf8" >> /etc/profile && \
 	apt-get clean
 #部分R包功能修复
 RUN apt-get update -y && \
