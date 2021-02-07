@@ -21,7 +21,7 @@ RUN conda update conda &&  \
 	conda config --add channels r &&  \
 	conda config --add channels bioconda &&  \
 	conda install -y r-base==4.0.3 &&  \
-	conda install -y bioconductor-cardinal  &&  \
+	conda install -y bioconductor-cardinal r-argparse r-showtext &&  \
 	mkdir data &&  \
 	chmod 777 data &&  \
 	conda clean -y --all
