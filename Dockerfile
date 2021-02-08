@@ -21,7 +21,7 @@ RUN conda update conda &&  \
 	conda config --add channels r &&  \
 	conda config --add channels bioconda &&  \
 	conda install -y r-base==4.0.3 &&  \
-	conda install -y bioconductor-cardinal r-argparse r-showtext r-openxlsx r-reshape2 &&  \
+	conda install -y bioconductor-cardinal r-argparse r-showtext &&  \
 	mkdir data &&  \
 	chmod 777 data &&  \
 	conda clean -y --all
@@ -55,6 +55,7 @@ RUN apt-get update -y && \
 	cp /opt/conda/lib/R/modules/lapack.so /opt/conda/lib/R/modules/libRlapack.so && \
 	cp /opt/conda/lib/R/modules/libRlapack.so /opt/conda/lib/libRlapack.so && \
 	apt-get clean
+RUN R -e 'install.packages("openxlsx",repos="https://mirrors.tuna.tsinghua.edu.cn/CRAN/")'
 #安装pandoc
 RUN apt-get install -y pandoc hub git-flow zip && \
 	apt-get clean
